@@ -1,6 +1,8 @@
 fun main(){
     println("Welcome to the Summoner's Rift !")
     challengeOne()
+
+
 }
 
 fun challengeOne(){
@@ -13,10 +15,39 @@ fun challengeOne(){
 
     val userAnswer = readLine()
     if(correctAnswers.contains(userAnswer)){
-        succes()
+        challengeTwo()
     }else{
         gameOver()
     }
+}
+
+fun challengeTwo(){
+    println("Well played !, your answer was right !")
+    println("While you've been farming peacefully, the jungler ganks you !")
+    println("To have a chance to survive you have 2 choices: low or high. A dice will be thrown.")
+    println("Low is a number between 1 and 3 and high between 4 and 6 , Good luck !")
+
+    val randomChoice = rollDice()
+    println(randomChoice)
+    val userAnswer = readLine()
+
+
+    when(userAnswer) {
+        "low" -> if (randomChoice == 1 || randomChoice == 2 || randomChoice == 3){
+            succes()
+        }else{
+            gameOver()
+        }
+            "high" -> if (randomChoice == 4 || randomChoice == 5 || randomChoice == 6){
+                succes()
+            }else{
+                gameOver()
+            }
+    }
+}
+
+fun rollDice(): Int{
+    return (0..6).random()
 }
 
 fun gameOver(){
