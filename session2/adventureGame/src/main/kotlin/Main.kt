@@ -1,8 +1,8 @@
+import kotlin.random.Random
+
 fun main(){
     println("Welcome to the Summoner's Rift !")
     challengeOne()
-
-
 }
 
 fun challengeOne(){
@@ -62,15 +62,33 @@ fun challengeThree(){
             println("The sword wasn't enough so you decided to run away to the challenge before, you coward !")
             challengeTwo()}
         "ak47" -> {
-            succes()
-            println("The ak47 was apparently sufficient to shoot down your enemy")}
-
+            challengeFour()
+            }
         "stick" -> {
             gameOver()
             println("Why would you choose a wooden stick though?")}
     }
 }
 
+fun challengeFour(){
+    println("The ak47 was apparently sufficient to shoot down your enemy")
+    println("Now that you have killed your enemy, it is time to destroy the turrets in your path.")
+    println("To destroy the turrets, you have to choose the right number between 1 and 100. \n" +
+            "Don't worry, I'll be there to tell you if you are far or not ;)")
+
+    val randomNumber = (1..100).random()
+    println(randomNumber)
+    val userAnswer = readLine()!!.toInt()
+
+    while (userAnswer != randomNumber){
+        println("The actual number is lower than this")
+
+    }
+
+    while (userAnswer == randomNumber){
+        succes()
+    }
+}
 
 fun rollDice(): Int{
     return (1..6).random()
