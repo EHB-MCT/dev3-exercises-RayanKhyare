@@ -11,7 +11,7 @@ fun challengeOne(){
     println("To kill your first minion, you must solve a first riddle")
     println("Name me a champions in the game that comes from Demacia")
 
-    val correctAnswers = setOf<String>("fiora","galio","garen","kayle","lucian","lux","morgana")
+    val correctAnswers = setOf<String>("fiora","galio","garen","kayle","lucian","lux","morgana","sylas","vayne","senna","jarvan iv","poppy","lee hwak","xin zhao")
 
     val userAnswer = readLine()
     if(correctAnswers.contains(userAnswer)){
@@ -28,7 +28,7 @@ fun challengeTwo(){
     println("Low is a number between 1 and 3 and high between 4 and 6 , Good luck !")
 
     val randomChoice = rollDice()
-    println(randomChoice)
+println(randomChoice)
     val userAnswer = readLine()
 
 
@@ -78,16 +78,22 @@ fun challengeFour(){
 
     val randomNumber = (1..100).random()
     println(randomNumber)
-    val userAnswer = readLine()!!.toInt()
+    var userAnswer = readLine()!!.toInt()
 
     while (userAnswer != randomNumber){
-        println("The actual number is lower than this")
-
+        if(userAnswer < randomNumber){
+            println("The number is higher than this , try again !")
+          userAnswer = readLine()!!.toInt()
+        }
+        if(userAnswer > randomNumber){
+            println("The number is lower than this , try again !")
+           userAnswer = readLine()!!.toInt()
+        }
     }
-
-    while (userAnswer == randomNumber){
+    if(userAnswer == randomNumber){
         succes()
     }
+
 }
 
 fun rollDice(): Int{
