@@ -7,9 +7,12 @@ SELECT customerName , salesRepEmployeeNumber FROM customers
 WHERE NOT salesRepEmployeeNumber = ''
 
 
-SELECT customers.customerName , customers.state as customerState, offices.state as officeState FROM customers
-LEFT JOIN offices ON offices.state = customers.state 
-WHERE customers.customerName = "The Sharp Gifts Warehouse"
+SELECT customerName , customers.salesRepEmployeeNumber, employees.officeCode , offices.city
+FROM((customers
+INNER JOIN employees ON customers.salesRepEmployeeNumber  = employees.employeeNumber )
+INNER JOIN offices ON employees.officeCode = offices.officeCode)
+WHERE customerName = "The Sharp Gifts Warehouse"
+
 
 
 
