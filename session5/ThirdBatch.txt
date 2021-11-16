@@ -1,0 +1,16 @@
+SELECT SUM(amount) FROM customers
+LEFT JOIN payments ON customers.customerNumber = payments.customerNumber 
+WHERE contactLastName = "BROWN" AND contactFirstName = "William" AND  payments.paymentDate LIKE "2004%"
+
+
+SELECT customerName , salesRepEmployeeNumber FROM customers
+WHERE NOT salesRepEmployeeNumber = ''
+
+
+SELECT customers.customerName , customers.state as customerState, offices.state as officeState FROM customers
+LEFT JOIN offices ON offices.state = customers.state 
+WHERE customers.customerName = "The Sharp Gifts Warehouse"
+
+
+
+
