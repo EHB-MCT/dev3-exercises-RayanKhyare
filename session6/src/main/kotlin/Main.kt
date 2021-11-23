@@ -23,17 +23,17 @@ fun main(){
     println("Which City are you going to ?")
     val userAnswer = readLine()
 
-    val statement = connection.prepareStatement("SELECT * FROM rides WHERE destination_city = '$userAnswer' ORDER BY departure_time ASC LIMIT 1")
+    val statement = connection.prepareStatement("SELECT * FROM rides WHERE destination_city = '$userAnswer' ORDER BY departure_time ASC LIMIT 3")
     val result = statement.executeQuery()
 
  while (result.next()){
-    var id = result.getInt   ("id")
+    var platform = result.getInt   ("platform")
      var train = result.getString       ("train")
      var departure_time = result.getString( "departure_time")
      var departure_city = result.getString( "departure_city")
      var destination_city= result.getString( "destination_city")
 
-     println("The next train to $userAnswer is at $departure_time. The ride begins in $departure_city and ends in $destination_city");
+     println("The next train to $userAnswer is today at $departure_time on platform $platform. The ride begins in $departure_city and ends in $destination_city");
 
  }
 
