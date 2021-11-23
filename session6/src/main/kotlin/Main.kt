@@ -20,9 +20,24 @@ fun main(){
                 credentials.databaseName,
         connectionProps)
 
-    val statement = connection.prepareStatement("SELECT * FROM trains")
+    println("Which City are you going to ?")
+    val userAnswer = readLine()
 
+    val statement = connection.prepareStatement("SELECT * FROM rides WHERE destination_city = '$userAnswer' ORDER BY departure_time ASC LIMIT 1")
     val result = statement.executeQuery()
 
-    println(result)
+ while (result.next()){
+    var id = result.getInt   ("id")
+     var train = result.getString       ("train")
+     var departure_time = result.getString( "departure_time")
+     var departure_city = result.getString( "departure_city")
+     var destination_city= result.getString( "destination_city")
+
+     println("The next train to $userAnswer is at $departure_time. The ride begins in $departure_city and ends in $destination_city");
+
+ }
+
+
 }
+
+
